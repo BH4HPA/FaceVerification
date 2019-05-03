@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="39fcb51f-ad3e-4676-8e45-22c9f7cce22b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/template/Fv.app.js" beforeDir="false" afterPath="$PROJECT_DIR$/template/Fv.app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -66,8 +65,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/template/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
-              <caret line="136" column="41" lean-forward="true" selection-start-line="136" selection-start-column="41" selection-end-line="136" selection-end-column="41" />
+            <state relative-caret-position="562">
+              <caret line="60" column="54" lean-forward="true" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="54" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -221,7 +220,7 @@
       <option name="presentableId" value="Default" />
       <updated>1556857766943</updated>
       <workItem from="1556857770581" duration="10238000" />
-      <workItem from="1556875897292" duration="12559000" />
+      <workItem from="1556875897292" duration="13019000" />
     </task>
     <task id="LOCAL-00001" summary="init core">
       <created>1556858341981</created>
@@ -335,11 +334,18 @@
       <option name="project" value="LOCAL" />
       <updated>1556888975431</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="修复GIF加载过慢 改为base64硬加载">
+      <created>1556889196800</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1556889196800</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22797000" />
+    <option name="totallyTimeSpent" value="23257000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="934" extended-state="6" />
@@ -385,7 +391,8 @@
     <MESSAGE value="支持四个标准测试函数" />
     <MESSAGE value="修复personID多了一个点导致无法使用 修复摄像头一直开着的BUG" />
     <MESSAGE value="自动生成guid防止测试用户冲突" />
-    <option name="LAST_COMMIT_MESSAGE" value="自动生成guid防止测试用户冲突" />
+    <MESSAGE value="修复GIF加载过慢 改为base64硬加载" />
+    <option name="LAST_COMMIT_MESSAGE" value="修复GIF加载过慢 改为base64硬加载" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/template/Fv.website.css">
@@ -453,8 +460,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/template/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="136" column="41" lean-forward="true" selection-start-line="136" selection-start-column="41" selection-end-line="136" selection-end-column="41" />
+        <state relative-caret-position="562">
+          <caret line="60" column="54" lean-forward="true" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="54" />
           <folding>
             <element signature="n#style#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
