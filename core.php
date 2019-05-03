@@ -95,3 +95,26 @@ if ($_POST["method"] == "addImage") {
     }
     exit;
 }
+if ($_POST["method"] == "verfMember") {
+    $data = 'access=Ray&personID='.$_POST["personID"].'.&image='.$_POST["image"];
+    $back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/verfMember.php",$data);
+    $result = json_decode($back,true);
+    $out["code"] = 0;
+    if ($back["RequestId"] == null){
+        $out["code"]=-1;
+        $out["Response"]["Error"]["Message"] = $result;
+        exit;
+    }
+    if ($back["Error"] != null) {
+        $out["code"] = 0;
+        $out["Response"]["Error"] = $back["Error"];
+    }else{
+        $out["code"] = 1;
+        if($back["isMatch"] == true){
+            $out["Info"] = "Matched.";
+        }else{
+            $out["Info"] = "Unmatched";
+        }
+    }
+    exit;
+}
