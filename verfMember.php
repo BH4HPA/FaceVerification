@@ -1,5 +1,5 @@
 <?php
-require_once('../b-core/Error/ErrorParser.php');
+require_once('errorManager/b-core/Error/ErrorParser.php');
 if ($_POST["access"] != "Ray") {
   try{
         throw new Exception("[0x200001] RayAlpha -> faceID -> verfMember -> Access denied.");
@@ -26,7 +26,7 @@ function https_request($curl, $data=null, $https=true, $method='post'){
     curl_close($ch);//关闭curl，释放资源
     return $str;
 }
-$isLiveFaceData = 'access=Ray&image='.$_POST["image"];
+$isLiveFaceData = 'access=Ray&image='.urlencode($_POST["image"]);
 $islive = https_request("https://ssh.s.r-ay.cn/api/faceVerf/isLiveFace.php",$isLiveFaceData);
 //echo $islive;
 $back = json_decode($islive,true);
@@ -52,13 +52,13 @@ try {
     $cred = new Credential("AKIDw3z4e4Wf1PyOjsmDE5nsndPAlATrc5tn", "1nQuJbicR8h9Tff3KQo5BFD1fAUcNk9Q");
     $httpProfile = new HttpProfile();
     $httpProfile->setEndpoint("iai.tencentcloudapi.com");
-      
+
     $clientProfile = new ClientProfile();
     $clientProfile->setHttpProfile($httpProfile);
     $client = new IaiClient($cred, "ap-shanghai", $clientProfile);
 
     $req = new VerifyFaceRequest();
-    
+
     $params = '{"Image":"'.$_POST["image"].'","PersonId":"'.$_POST["personID"].'"}';
     $req->fromJsonString($params);
 
