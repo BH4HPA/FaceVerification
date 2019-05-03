@@ -40,7 +40,7 @@ function https_request($curl, $data=null, $https=true, $method='post'){
 //}
 if ($_POST["method"] == "addMember") {
 $data = 'access=Ray&personName='.$_POST["personID"].'.&personID='.$_POST["personID"].'.&image='.$_POST["image"];
-$back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/isLiveFace.php",$data);
+$back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/addMember.php",$data);
 $result = json_decode($back,true);
 $out["code"] = 0;
 if ($back["RequestId"] == null){
@@ -53,8 +53,45 @@ if ($back["FaceId"] == null) {
     $out["Response"]["Error"] = $back["Error"];
 }else{
     $out["code"] = 1;
-    $out["FaceId"] = $back["FaceId"];
+    $out["Info"] = $back["FaceId"];
 }
 exit;
 }
-
+if ($_POST["method"] == "delMember") {
+    $data = 'access=Ray&personID='.$_POST["personID"];
+    $back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/delMember.php",$data);
+    $result = json_decode($back,true);
+    $out["code"] = 0;
+    if ($back["RequestId"] == null){
+        $out["code"]=-1;
+        $out["Response"]["Error"]["Message"] = $result;
+        exit;
+    }
+    if ($back["Error"] != null) {
+        $out["code"] = 0;
+        $out["Response"]["Error"] = $back["Error"];
+    }else{
+        $out["code"] = 1;
+        $out["Info"] = "OK.";
+    }
+    exit;
+}
+if ($_POST["method"] == "addImage") {
+    $data = 'access=Ray&personID='.$_POST["personID"].'.&image='.$_POST["image"];
+    $back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/addImage.php",$data);
+    $result = json_decode($back,true);
+    $out["code"] = 0;
+    if ($back["RequestId"] == null){
+        $out["code"]=-1;
+        $out["Response"]["Error"]["Message"] = $result;
+        exit;
+    }
+    if ($back["SucFaceNum"] != 1) {
+        $out["code"] = 0;
+        $out["Response"]["Error"] = $back["Error"];
+    }else{
+        $out["code"] = 1;
+        $out["Info"] = "OK.";
+    }
+    exit;
+}
