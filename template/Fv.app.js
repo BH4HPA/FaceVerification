@@ -1,4 +1,4 @@
-// Javascript faceVerification - Tencent cloud face recognition experience.
+    // Javascript faceVerification - Tencent cloud face recognition experience.
 // Author @LF112 (https://github.com/LF112)
 // Copyright reservation is required.
 
