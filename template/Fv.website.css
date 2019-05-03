@@ -33,11 +33,39 @@ body {
 }
 
 .Fv-Suspensionlayer {
+    position: fixed;
+    _position: absolute;
+    z-index: 100000;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    -moz-transition: opacity .5s;
+    -o-transition: opacity .5s;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+}
+
+.Fv-Suspensionlayer .Fv-Suspensionlayer_Ghost {
     position: absolute;
-    top: 50%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    _width: 2000px;
+    _height: 1000px;
+    opacity: .6;
+}
+
+.Fv-Suspensionlayer .Fv-Suspensionlayer_Main {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    border-radius: 12px;
     left: 50%;
-    z-index: 9999999999999999;
+    top: 50%;
     transform: translate(-50%, -50%);
+    padding: 0;
 }
 
 
