@@ -32,5 +32,13 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+.Fv-Suspensionlayer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 9999999999999999;
+    transform: translate(-50%, -50%);
+}
+
 
 /*Made By LF112, Created and produced the project by Ray.*/
