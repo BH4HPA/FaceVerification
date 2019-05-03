@@ -1,5 +1,5 @@
 <?php
-require_once('errorManager/b-core/Error/ErrorParser.php');
+require_once('errorManager/ErrorParser.php');
 if ($_POST["access"] != "Ray") {
   try{
         throw new Exception("[0x200001] RayAlpha -> faceID -> verfMember -> Access denied.");
