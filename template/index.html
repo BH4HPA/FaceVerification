@@ -42,8 +42,12 @@
     <script>
         window.onload = function() {
             Fv('main', {
-                fun: 1,
-                file: ['./gifs/faceid.png']
+                fun: 2,
+                file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
+                check: [true, function(ID) {
+                    // Fun Callback
+                    alert(ID)
+                }]
             }, function(ID) { /* Callback */ });
         }
     </script>

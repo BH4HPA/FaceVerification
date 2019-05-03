@@ -33,6 +33,16 @@ let Fv = function(InBox, Fv, callback) {
             } else if (Fv.fun === 2) {
                 //Fun 2 > Load
 
+                if (Fv.check[0]) {
+                    $('#' + MainID).append("<img id=\"" + ImgID + "\" src=\"" + Fv.file[1] + "\" ondragstart=\"return false\" oncontextmenu=\"return false\">");
+                    Fv.check[1]([ImgID]);
+                } else if (!Fv.check[0]) {
+                    $('#' + MainID).append("<img id=\"" + ImgID + "\" src=\"" + Fv.file[2] + "\" ondragstart=\"return false\" oncontextmenu=\"return false\">");
+                    Fv.check[1]([ImgID]);
+                } else console.log('Fv -> 传入值必须为布尔!')
+
+                $('#' + BoxID).css({ display: 'block' });
+                $('#' + MainID).fadeIn(500);
 
             } else { console.log('Fv -> 未定义操作!'); return; }
 
