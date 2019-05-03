@@ -60,19 +60,21 @@ body {
 
 .Fv-Suspensionlayer .Fv-Suspensionlayer_Main {
     position: relative;
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 12px;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
     padding: 0;
     background-color: #fff;
+    text-align: center;
 }
 
 .Fv-Suspensionlayer_Main img {
     width: 100px;
     height: 100px;
+    margin: 0 auto;
     border-radius: 12px;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -80,6 +82,10 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 
