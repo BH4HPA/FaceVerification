@@ -26,7 +26,7 @@ function https_request($curl, $data=null, $https=true, $method='post'){
     return $str;
 }
 if ($_POST["method"] == "addMember") {
-    $data = 'access=Ray&personName='.$_POST["personID"].'.&personID='.$_POST["personID"].'.&image='.urlencode($_POST["image"]);
+    $data = 'access=Ray&personName='.$_POST["personID"].'&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
     $back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/addMember.php",$data);
     $result = json_decode($back,true);
     $out["code"] = 0;
@@ -68,7 +68,7 @@ if ($_POST["method"] == "delMember") {
     exit;
 }
 if ($_POST["method"] == "addImage") {
-    $data = 'access=Ray&personID='.$_POST["personID"].'.&image='.urlencode($_POST["image"]);
+    $data = 'access=Ray&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
     $back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/addImage.php",$data);
     $result = json_decode($back,true);
     $out["code"] = 0;
@@ -89,7 +89,7 @@ if ($_POST["method"] == "addImage") {
     exit;
 }
 if ($_POST["method"] == "verfMember") {
-    $data = 'access=Ray&personID='.$_POST["personID"].'.&image='.urlencode($_POST["image"]);
+    $data = 'access=Ray&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
     $back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/verfMember.php",$data);
     $result = json_decode($back,true);
     $out["code"] = 0;

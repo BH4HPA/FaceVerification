@@ -8,7 +8,7 @@ if ($_POST["access"] != "Ray") {
         }
   exit;
 }
-//先判断是不是真人
+/*//先判断是不是真人
 function https_request($curl, $data=null, $https=true, $method='post'){
     $ch = curl_init();//初始化
     curl_setopt($ch, CURLOPT_URL, $curl);//设置访问的URL
@@ -36,9 +36,9 @@ if ($back["RequestId"] == null){
   exit;
 }
 if ($back["Score"] < 87){
-  echo '非活体真人';
+  echo \'非活体真人';
 exit;
-}
+}*/
 //------------------------------------------------
 require_once 'core/TCloudAutoLoader.php';
 use TencentCloud\Common\Credential;

@@ -35,9 +35,10 @@
     <video id="Fv-Video" width="0" height="0" autoplay hidden></video>
     <canvas id="Fv-Canvas" width="640" height="480" hidden></canvas>
     <main>
-        <div id="B1" style="position:absolute;cursor:pointer;width:55px;height:25px;margin-top: 20%;margin-left: 120px;letter-spacing:.05em;text-align:center;font-size:12px;line-height:2.2;color: #fff;border-radius: 2px;background:rgba(51,51,51,.82)!important;">成功</div>
-        <div id="B2" style="position:absolute;cursor:pointer;width:55px;height:25px;margin-top: 20%;margin-left: 60px;letter-spacing:.05em;text-align:center;font-size:12px;line-height:2.2;color: #fff;border-radius: 2px;background:rgba(51,51,51,.82)!important;">失败</div>
-        <div id="B3" style="position:absolute;cursor:pointer;width:55px;height:25px;margin-top: 20%;margin-left: 60px;letter-spacing:.05em;text-align:center;font-size:12px;line-height:2.2;color: #fff;border-radius: 2px;background:rgba(51,51,51,.82)!important;">测试新增用户</div>
+        <div id="tryVerifyButton" style="position:absolute;cursor:pointer;width:80px;height:25px;margin-top: 20%;margin-left: 230px;letter-spacing:.05em;text-align:center;font-size:12px;line-height:2.2;color: #fff;border-radius: 2px;background:rgba(51,51,51,.82)!important;">尝试验证</div>
+        <div id="addImageButton" style="position:absolute;cursor:pointer;width:80px;height:25px;margin-top: 20%;margin-left: 145px;letter-spacing:.05em;text-align:center;font-size:12px;line-height:2.2;color: #fff;border-radius: 2px;background:rgba(51,51,51,.82)!important;">增加图像</div>
+        <div id="delMemberButton" style="position:absolute;cursor:pointer;width:80px;height:25px;margin-top: 20%;margin-left: 60px;letter-spacing:.05em;text-align:center;font-size:12px;line-height:2.2;color: #fff;border-radius: 2px;background:rgba(51,51,51,.82)!important;">删除用户</div>
+        <div id="addMemberButton" style="position:absolute;cursor:pointer;width:80px;height:25px;margin-top: 20%;margin-left: -25px;letter-spacing:.05em;text-align:center;font-size:12px;line-height:2.2;color: #fff;border-radius: 2px;background:rgba(51,51,51,.82)!important;">新增用户</div>
 
     </main>
 
@@ -45,6 +46,7 @@
     <script src="Fv.app.js"></script>
     <script>
         var isAccessed = false;
+        var userid = 'test';
         function getPhotoAccess() { //获取摄像头权限并开始拍照方便取像
             if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
                 navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
@@ -66,117 +68,9 @@
                 return encodeURIComponent(canvas.toDataURL('image/jpeg').split(",")[1]);
             }else return '';
         }
-
+        getPhotoAccess(); //向用户要权限
         window.onload = function() {
-            $('#B1').click(function() {
-                Fv('main', {
-                    fun: 1,
-                    file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
-                    check: [true, function(ID) {
-                        // Fun Callback
-                    }]
-                }, function(ID) {
-                    /* Callback */
-                    setTimeout( function(){
-                        //-----------
-                        //doSomething
-                        //-----------
-                        if(true === true){
-                            Fv('main', {
-                                fun: 2,
-                                file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
-                                check: [true, function(ID) {
-                                    // Fun Callback
-                                }]
-                            }, function(ID) {
-                                /* Callback */
-                                setTimeout(function() {
-                                    $('#' + ID[1]).fadeOut(500);
-                                    setTimeout(function() {
-                                        $('#' + ID[0]).remove()
-                                    }, 500);
-                                },1700);
-                            });
-                        }else{
-                            Fv('main', {
-                                fun: 2,
-                                file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
-                                check: [false, function(ID) {
-                                    // Fun Callback
-                                }]
-                            }, function(ID) {
-                                /* Callback */
-                                setTimeout(function() {
-                                    $('#' + ID[1]).fadeOut(500);
-                                    setTimeout(function() {
-                                        $('#' + ID[0]).remove()
-                                    }, 500);
-                                },1100);
-                            });
-                        }
-                        $('#' + ID[1]).fadeOut(500);
-                        setTimeout(function() {
-                            $('#' + ID[0]).remove()
-                        }, 500);
-                    },1000)
-                });
-            });
-
-            $('#B2').click(function() {
-                Fv('main', {
-                    fun: 1,
-                    file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
-                    check: [true, function(ID) {
-                        // Fun Callback
-                    }]
-                }, function(ID) {
-                    /* Callback */
-                    setTimeout( function(){
-                        //-----------
-                        //doSomething
-                        //-----------
-                        if(true === false){
-                            Fv('main', {
-                                fun: 2,
-                                file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
-                                check: [true, function(ID) {
-                                    // Fun Callback
-                                }]
-                            }, function(ID) {
-                                /* Callback */
-                                setTimeout(function() {
-                                    $('#' + ID[1]).fadeOut(500);
-                                    setTimeout(function() {
-                                        $('#' + ID[0]).remove()
-                                    }, 500);
-                                },1700);
-                            });
-                        }else{
-                            Fv('main', {
-                                fun: 2,
-                                file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
-                                check: [false, function(ID) {
-                                    // Fun Callback
-                                }]
-                            }, function(ID) {
-                                /* Callback */
-                                setTimeout(function() {
-                                    $('#' + ID[1]).fadeOut(500);
-                                    setTimeout(function() {
-                                        $('#' + ID[0]).remove()
-                                    }, 500);
-                                },1100);
-                            });
-                        }
-                        $('#' + ID[1]).fadeOut(500);
-                        setTimeout(function() {
-                            $('#' + ID[0]).remove()
-                        }, 500);
-                    },1000)
-                });
-            });
-
-            $('#B3').click(function() {
+            $('#addMemberButton').click(function() {
                 Fv('main', {
                     fun: 1,
                     file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
@@ -191,8 +85,8 @@
                         if(imgData !== ''){
                             $.ajax({
                                 type: 'post',
-                                url: 'https://ssh.s.r-ay.cn/api/faceVerf/core.php',
-                                data: 'access=Ray&method=addMember&personID=test&image=' + imgData,
+                                url: '../core.php',
+                                data: 'access=Ray&method=addMember&personID=' + userid + '&image=' + imgData,
                                 cache: false,
                                 dataType: 'json',
                                 success: function (data) {
@@ -250,6 +144,233 @@
                     },1000)
                 });
             });
+
+            $('#delMemberButton').click(function() {
+                Fv('main', {
+                    fun: 1,
+                    file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
+                    check: [true, function(ID) {
+                        // Fun Callback
+                    }]
+                }, function(ID) {
+                    /* Callback */
+                    setTimeout( function(){
+                        var isSuccess = false;
+                        if(imgData !== ''){
+                            $.ajax({
+                                type: 'post',
+                                url: '../core.php',
+                                data: 'access=Ray&method=delMember&personID=' + userid,
+                                cache: false,
+                                dataType: 'json',
+                                success: function (data) {
+                                    if (data['code'] === 2) {
+                                        isSuccess = true;
+                                        console.log(data['Info']);
+                                    } else {
+                                        isSuccess = false;
+                                        console.warn(data['Response']['Error']['Message']);
+                                    }
+                                },
+                                error: function () {
+                                    isSuccess = false;
+                                }
+                            })
+                        }else isSuccess = false;
+                        //-----------
+                        if(isSuccess){
+                            Fv('main', {
+                                fun: 2,
+                                file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
+                                check: [true, function(ID) {
+                                    // Fun Callback
+                                }]
+                            }, function(ID) {
+                                /* Callback */
+                                setTimeout(function() {
+                                    $('#' + ID[1]).fadeOut(500);
+                                    setTimeout(function() {
+                                        $('#' + ID[0]).remove()
+                                    }, 500);
+                                },1700);
+                            });
+                        }else{
+                            Fv('main', {
+                                fun: 2,
+                                file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
+                                check: [false, function(ID) {
+                                    // Fun Callback
+                                }]
+                            }, function(ID) {
+                                /* Callback */
+                                setTimeout(function() {
+                                    $('#' + ID[1]).fadeOut(500);
+                                    setTimeout(function() {
+                                        $('#' + ID[0]).remove()
+                                    }, 500);
+                                },1100);
+                            });
+                        }
+                        $('#' + ID[1]).fadeOut(500);
+                        setTimeout(function() {
+                            $('#' + ID[0]).remove()
+                        }, 500);
+                    },1000)
+                });
+            });
+
+            $('#addImageButton').click(function() {
+                Fv('main', {
+                    fun: 1,
+                    file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
+                    check: [true, function(ID) {
+                        // Fun Callback
+                    }]
+                }, function(ID) {
+                    /* Callback */
+                    setTimeout( function(){
+                        var isSuccess = false;
+                        var imgData = takePhoto();
+                        if(imgData !== ''){
+                            $.ajax({
+                                type: 'post',
+                                url: '../core.php',
+                                data: 'access=Ray&method=addImage&personID=' + userid + '&image=' + imgData,
+                                cache: false,
+                                dataType: 'json',
+                                success: function (data) {
+                                    if (data['code'] === 2) {
+                                        isSuccess = true;
+                                        console.log(data['Info']);
+                                    } else {
+                                        isSuccess = false;
+                                        console.warn(data['Response']['Error']['Message']);
+                                    }
+                                },
+                                error: function () {
+                                    isSuccess = false;
+                                }
+                            })
+                        }else isSuccess = false;
+                        //-----------
+                        if(isSuccess){
+                            Fv('main', {
+                                fun: 2,
+                                file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
+                                check: [true, function(ID) {
+                                    // Fun Callback
+                                }]
+                            }, function(ID) {
+                                /* Callback */
+                                setTimeout(function() {
+                                    $('#' + ID[1]).fadeOut(500);
+                                    setTimeout(function() {
+                                        $('#' + ID[0]).remove()
+                                    }, 500);
+                                },1700);
+                            });
+                        }else{
+                            Fv('main', {
+                                fun: 2,
+                                file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
+                                check: [false, function(ID) {
+                                    // Fun Callback
+                                }]
+                            }, function(ID) {
+                                /* Callback */
+                                setTimeout(function() {
+                                    $('#' + ID[1]).fadeOut(500);
+                                    setTimeout(function() {
+                                        $('#' + ID[0]).remove()
+                                    }, 500);
+                                },1100);
+                            });
+                        }
+                        $('#' + ID[1]).fadeOut(500);
+                        setTimeout(function() {
+                            $('#' + ID[0]).remove()
+                        }, 500);
+                    },1000)
+                });
+            });
+
+            $('#tryVerifyButton').click(function() {
+                Fv('main', {
+                    fun: 1,
+                    file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
+                    check: [true, function(ID) {
+                        // Fun Callback
+                    }]
+                }, function(ID) {
+                    /* Callback */
+                    setTimeout( function(){
+                        var isSuccess = false;
+                        var imgData = takePhoto();
+                        if(imgData !== ''){
+                            $.ajax({
+                                type: 'post',
+                                url: '../core.php',
+                                data: 'access=Ray&method=verfMember&personID=' + userid + '&image=' + imgData,
+                                cache: false,
+                                dataType: 'json',
+                                success: function (data) {
+                                    if (data['code'] === 2) {
+                                        isSuccess = true;
+                                        console.log(data['Info']);
+                                    } else {
+                                        isSuccess = false;
+                                        console.warn(data['Response']['Error']['Message']);
+                                    }
+                                },
+                                error: function () {
+                                    isSuccess = false;
+                                }
+                            })
+                        }else isSuccess = false;
+                        //-----------
+                        if(isSuccess){
+                            Fv('main', {
+                                fun: 2,
+                                file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
+                                check: [true, function(ID) {
+                                    // Fun Callback
+                                }]
+                            }, function(ID) {
+                                /* Callback */
+                                setTimeout(function() {
+                                    $('#' + ID[1]).fadeOut(500);
+                                    setTimeout(function() {
+                                        $('#' + ID[0]).remove()
+                                    }, 500);
+                                },1700);
+                            });
+                        }else{
+                            Fv('main', {
+                                fun: 2,
+                                file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
+                                check: [false, function(ID) {
+                                    // Fun Callback
+                                }]
+                            }, function(ID) {
+                                /* Callback */
+                                setTimeout(function() {
+                                    $('#' + ID[1]).fadeOut(500);
+                                    setTimeout(function() {
+                                        $('#' + ID[0]).remove()
+                                    }, 500);
+                                },1100);
+                            });
+                        }
+                        $('#' + ID[1]).fadeOut(500);
+                        setTimeout(function() {
+                            $('#' + ID[0]).remove()
+                        }, 500);
+                    },1000)
+                });
+            });
+
+
+
         }
     </script>
 </body>
