@@ -39,41 +39,45 @@ function https_request($curl, $data=null, $https=true, $method='post'){
 //exit;
 //}
 if ($_POST["method"] == "addMember") {
-$data = 'access=Ray&personName='.$_POST["personID"].'.&personID='.$_POST["personID"].'.&image='.$_POST["image"];
-$back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/addMember.php",$data);
-$result = json_decode($back,true);
-$out["code"] = 0;
-if ($back["RequestId"] == null){
-    $out["code"]=-1;
-    $out["Response"]["Error"]["Message"] = $result;
-    exit;
-}
-if ($back["FaceId"] == null) {
+    $data = 'access=Ray&personName='.$_POST["personID"].'.&personID='.$_POST["personID"].'.&image='.$_POST["image"];
+    $back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/addMember.php",$data);
+    $result = json_decode($back,true);
     $out["code"] = 0;
-    $out["Response"]["Error"] = $back["Error"];
-}else{
-    $out["code"] = 1;
-    $out["Info"] = $back["FaceId"];
-}
-exit;
+    if ($result["RequestId"] == null){
+        $out["code"]= 0;
+        $out["Response"]["Error"]["Message"] = $back;
+        echo json_encode($out);
+        exit;
+    }
+    if ($result["FaceId"] == null) {
+        $out["code"] = 1;
+        $out["Response"]["Error"] = $result["Error"];
+    }else{
+        $out["code"] = 2;
+        $out["Info"] = $result["FaceId"];
+    }
+    echo json_encode($out);
+    exit;
 }
 if ($_POST["method"] == "delMember") {
     $data = 'access=Ray&personID='.$_POST["personID"];
     $back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/delMember.php",$data);
     $result = json_decode($back,true);
     $out["code"] = 0;
-    if ($back["RequestId"] == null){
-        $out["code"]=-1;
-        $out["Response"]["Error"]["Message"] = $result;
+    if ($result["RequestId"] == null){
+        $out["code"]= 0;
+        $out["Response"]["Error"]["Message"] = $back;
+        echo json_encode($out);
         exit;
     }
-    if ($back["Error"] != null) {
-        $out["code"] = 0;
-        $out["Response"]["Error"] = $back["Error"];
-    }else{
+    if ($result["Error"] != null) {
         $out["code"] = 1;
+        $out["Response"]["Error"] = $result["Error"];
+    }else{
+        $out["code"] = 2;
         $out["Info"] = "OK.";
     }
+    echo json_encode($out);
     exit;
 }
 if ($_POST["method"] == "addImage") {
@@ -81,18 +85,20 @@ if ($_POST["method"] == "addImage") {
     $back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/addImage.php",$data);
     $result = json_decode($back,true);
     $out["code"] = 0;
-    if ($back["RequestId"] == null){
-        $out["code"]=-1;
-        $out["Response"]["Error"]["Message"] = $result;
+    if ($result["RequestId"] == null){
+        $out["code"]= 0;
+        $out["Response"]["Error"]["Message"] = $back;
+        echo json_encode($out);
         exit;
     }
-    if ($back["SucFaceNum"] != 1) {
-        $out["code"] = 0;
-        $out["Response"]["Error"] = $back["Error"];
-    }else{
+    if ($result["SucFaceNum"] != 1) {
         $out["code"] = 1;
+        $out["Response"]["Error"] = $result["Error"];
+    }else{
+        $out["code"] = 2;
         $out["Info"] = "OK.";
     }
+    echo json_encode($out);
     exit;
 }
 if ($_POST["method"] == "verfMember") {
@@ -100,21 +106,23 @@ if ($_POST["method"] == "verfMember") {
     $back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/verfMember.php",$data);
     $result = json_decode($back,true);
     $out["code"] = 0;
-    if ($back["RequestId"] == null){
-        $out["code"]=-1;
-        $out["Response"]["Error"]["Message"] = $result;
+    if ($result["RequestId"] == null){
+        $out["code"]= 0;
+        $out["Response"]["Error"]["Message"] = $back;
+        echo json_encode($out);
         exit;
     }
-    if ($back["Error"] != null) {
-        $out["code"] = 0;
-        $out["Response"]["Error"] = $back["Error"];
-    }else{
+    if ($result["Error"] != null) {
         $out["code"] = 1;
+        $out["Response"]["Error"] = $result["Error"];
+    }else{
+        $out["code"] = 2;
         if($back["isMatch"] == true){
             $out["Info"] = "Matched.";
         }else{
             $out["Info"] = "Unmatched";
         }
     }
+    echo json_encode($out);
     exit;
 }
