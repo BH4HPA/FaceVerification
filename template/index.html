@@ -41,9 +41,9 @@
     <script src="Fv.app.js"></script>
     <script>
         window.onload = function() {
-            Fv({
-                i: 'main',
+            Fv('main', {
                 fun: 1,
+                file: ['./gifs/faceid.png']
             }, function(ID) { /* Callback */ });
         }
     </script>

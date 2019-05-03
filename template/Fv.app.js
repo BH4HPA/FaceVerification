@@ -2,12 +2,12 @@
 // Author @LF112 (https://github.com/LF112)
 // Copyright reservation is required.
 
-let Fv = function(Fv, callback) {
+let Fv = function(InBox, Fv, callback) {
     return new Promise(function() {
         console.clear();
 
         if (Fv.fun <= 0) { console.log('Fv -> 未定义操作!'); return; }
-        if ($(Fv.i).length > 0) {
+        if ($(InBox).length > 0) {
             //导入Fv Main
 
             var FvMain = "",
@@ -16,16 +16,22 @@ let Fv = function(Fv, callback) {
                 ImgID = Math.random().toString(36).substr(2);
             FvMain += "<div id=\"" + BoxID + "\" class=\"Fv-Suspensionlayer\" style=\"display: none;\">\n";
             FvMain += "	<div class=\"Fv-Suspensionlayer_Ghost\"><\/div>\n";
-            FvMain += "	<div id=\"" + MainID + "\" class=\"Fv-Suspensionlayer_Main\" style=\"display: none;\">\n";
-            FvMain += "		<img id=\"" + ImgID + "\" ondragstart=\"return false\" oncontextmenu=\"return false\">\n";
-            FvMain += "	<\/div>\n";
+            FvMain += "	<div id=\"" + MainID + "\" class=\"Fv-Suspensionlayer_Main\" style=\"display: none;\"><\/div>\n";
             FvMain += "<\/div>\n";
 
-            $(Fv.i).prepend(FvMain)
+            $(InBox).prepend(FvMain)
 
             if (Fv.fun === 1) {
-                //Fun 1
+                //Fun 1 > Show
 
+                $('#' + MainID).append("<img id=\"" + ImgID + "\" src=\"" + Fv.file[0] + "\" ondragstart=\"return false\" oncontextmenu=\"return false\">");
+                //---In
+
+                $('#' + BoxID).css({ display: 'block' });
+                $('#' + MainID).fadeIn(500);
+
+            } else if (Fv.fun === 2) {
+                //Fun 2 > Load
 
 
             } else { console.log('Fv -> 未定义操作!'); return; }
