@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="39fcb51f-ad3e-4676-8e45-22c9f7cce22b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/Fv.app.js" beforeDir="false" afterPath="$PROJECT_DIR$/template/Fv.app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/template/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/template/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -43,8 +44,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/template/Fv.app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
+            <state relative-caret-position="469">
+              <caret line="39" column="42" lean-forward="true" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -65,8 +66,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/template/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="366" column="12" selection-start-line="366" selection-start-column="12" selection-end-line="366" selection-end-column="12" />
+            <state relative-caret-position="215">
+              <caret line="136" column="41" lean-forward="true" selection-start-line="136" selection-start-column="41" selection-end-line="136" selection-end-column="41" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -119,6 +120,8 @@
       <find>$_POST[&quot;image&quot;]</find>
       <find>https://ssh.s.r-ay.cn/api/faceVerf/</find>
       <find>var</find>
+      <find>Fv</find>
+      <find>['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif']</find>
     </findStrings>
     <replaceStrings>
       <replace>''</replace>
@@ -127,6 +130,7 @@
       <replace>urlencode($_POST[&quot;image&quot;])</replace>
       <replace>../</replace>
       <replace>let</replace>
+      <replace>[faceid1, faceid2, faceid3]</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -137,12 +141,12 @@
       <list>
         <option value="$PROJECT_DIR$/isLiveFace.php" />
         <option value="$PROJECT_DIR$/delMember.php" />
-        <option value="$PROJECT_DIR$/template/Fv.app.js" />
         <option value="$PROJECT_DIR$/addImage.php" />
         <option value="$PROJECT_DIR$/verfMember.php" />
         <option value="$PROJECT_DIR$/searchMember.php" />
         <option value="$PROJECT_DIR$/addMember.php" />
         <option value="$PROJECT_DIR$/core.php" />
+        <option value="$PROJECT_DIR$/template/Fv.app.js" />
         <option value="$PROJECT_DIR$/template/index.html" />
       </list>
     </option>
@@ -217,7 +221,7 @@
       <option name="presentableId" value="Default" />
       <updated>1556857766943</updated>
       <workItem from="1556857770581" duration="10238000" />
-      <workItem from="1556875897292" duration="12203000" />
+      <workItem from="1556875897292" duration="12559000" />
     </task>
     <task id="LOCAL-00001" summary="init core">
       <created>1556858341981</created>
@@ -317,11 +321,25 @@
       <option name="project" value="LOCAL" />
       <updated>1556886025257</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="修复personID多了一个点导致无法使用 修复摄像头一直开着的BUG">
+      <created>1556888850664</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1556888850664</updated>
+    </task>
+    <task id="LOCAL-00016" summary="自动生成guid防止测试用户冲突">
+      <created>1556888975431</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1556888975431</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22441000" />
+    <option name="totallyTimeSpent" value="22797000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="934" extended-state="6" />
@@ -365,7 +383,9 @@
     <MESSAGE value="避免GIF只播放一次 在再次调用时爆炸" />
     <MESSAGE value="现在支持addMember" />
     <MESSAGE value="支持四个标准测试函数" />
-    <option name="LAST_COMMIT_MESSAGE" value="支持四个标准测试函数" />
+    <MESSAGE value="修复personID多了一个点导致无法使用 修复摄像头一直开着的BUG" />
+    <MESSAGE value="自动生成guid防止测试用户冲突" />
+    <option name="LAST_COMMIT_MESSAGE" value="自动生成guid防止测试用户冲突" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/template/Fv.website.css">
@@ -413,17 +433,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/template/Fv.app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="31" column="29" lean-forward="true" selection-start-line="31" selection-start-column="29" selection-end-line="31" selection-end-column="29" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/addMember.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
@@ -431,10 +440,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/template/Fv.app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="469">
+          <caret line="39" column="42" lean-forward="true" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/template/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="366" column="12" selection-start-line="366" selection-start-column="12" selection-end-line="366" selection-end-column="12" />
+        <state relative-caret-position="215">
+          <caret line="136" column="41" lean-forward="true" selection-start-line="136" selection-start-column="41" selection-end-line="136" selection-end-column="41" />
           <folding>
             <element signature="n#style#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#main#0;n#body#0;n#html#0;n#!!top" expanded="true" />

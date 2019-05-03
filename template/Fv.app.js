@@ -35,10 +35,10 @@ let Fv = function(InBox, Fv, callback) {
                 //Fun 2 > Load
 
                 if (Fv.check[0]) {
-                    $('#' + MainID).append("<img id=\"" + ImgID + "\" src=\"" + Fv.file[1] + "?time=" + new Date().getTime() + "\" ondragstart=\"return false\" oncontextmenu=\"return false\">");
+                    $('#' + MainID).append("<img id=\"" + ImgID + "\" src=\"" + Fv.file[1]+ "\" ondragstart=\"return false\" oncontextmenu=\"return false\">");
                     Fv.check[1]([ImgID]);
                 } else if (!Fv.check[0]) {
-                    $('#' + MainID).append("<img id=\"" + ImgID + "\" src=\"" + Fv.file[2] + "?time=" + new Date().getTime() + "\" ondragstart=\"return false\" oncontextmenu=\"return false\">");
+                    $('#' + MainID).append("<img id=\"" + ImgID + "\" src=\"" + Fv.file[2]  + "\" ondragstart=\"return false\" oncontextmenu=\"return false\">");
                     Fv.check[1]([ImgID]);
                 } else console.log('Fv -> 传入值必须为布尔!')
 
