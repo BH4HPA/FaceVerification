@@ -26,7 +26,7 @@ function https_request($curl, $data=null, $https=true, $method='post'){
     curl_close($ch);//关闭curl，释放资源
     return $str;
 }
-$isLiveFaceData = 'access=Ray&image='.$_POST["image"];
+$isLiveFaceData = 'access=Ray&image='.urlencode($_POST["image"]);
 $islive = https_request("https://ssh.s.r-ay.cn/api/faceVerf/isLiveFace.php",$isLiveFaceData);
 //echo $islive;
 $back = json_decode($islive,true);
