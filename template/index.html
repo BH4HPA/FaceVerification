@@ -128,30 +128,51 @@
                                             isSuccess = false;
                                             console.warn(data['Response']['Error']['Message']);
                                         }
+                                        if(isSuccess){
+                                            Fv('main', {
+                                                fun: 2,
+                                                file: [faceid1, faceid2, faceid3],
+                                                check: [true, function(ID) {
+                                                    // Fun Callback
+                                                }]
+                                            }, function(ID) {
+                                                /* Callback */
+                                                setTimeout(function() {
+                                                    $('#' + ID[1]).fadeOut(500);
+                                                    setTimeout(function() {
+                                                        $('#' + ID[0]).remove()
+                                                    }, 500);
+                                                },1700);
+                                            });
+                                        }else{
+                                            Fv('main', {
+                                                fun: 2,
+                                                file: [faceid1, faceid2, faceid3],
+                                                check: [false, function(ID) {
+                                                    // Fun Callback
+                                                }]
+                                            }, function(ID) {
+                                                /* Callback */
+                                                setTimeout(function() {
+                                                    $('#' + ID[1]).fadeOut(500);
+                                                    setTimeout(function() {
+                                                        $('#' + ID[0]).remove()
+                                                    }, 500);
+                                                },1100);
+                                            });
+                                        }
+                                        $('#' + ID[1]).fadeOut(500);
+                                        setTimeout(function() {
+                                            $('#' + ID[0]).remove()
+                                        }, 500);
                                     },
                                     error: function () {
                                         isSuccess = false;
                                     }
                                 })
-                            }else isSuccess = false;
-                            //-----------
-                            if(isSuccess){
-                                Fv('main', {
-                                    fun: 2,
-                                    file: [faceid1, faceid2, faceid3],
-                                    check: [true, function(ID) {
-                                        // Fun Callback
-                                    }]
-                                }, function(ID) {
-                                    /* Callback */
-                                    setTimeout(function() {
-                                        $('#' + ID[1]).fadeOut(500);
-                                        setTimeout(function() {
-                                            $('#' + ID[0]).remove()
-                                        }, 500);
-                                    },1700);
-                                });
-                            }else{
+
+                            }else {
+                                //fail
                                 Fv('main', {
                                     fun: 2,
                                     file: [faceid1, faceid2, faceid3],
@@ -172,6 +193,7 @@
                             setTimeout(function() {
                                 $('#' + ID[0]).remove()
                             }, 500);
+                            //-----------
                         },1500);
                     },1000)
                 });
@@ -202,45 +224,60 @@
                                     isSuccess = false;
                                     console.warn(data['Response']['Error']['Message']);
                                 }
+                                if(isSuccess){
+                                    Fv('main', {
+                                        fun: 2,
+                                        file: [faceid1, faceid2, faceid3],
+                                        check: [true, function(ID) {
+                                            // Fun Callback
+                                        }]
+                                    }, function(ID) {
+                                        /* Callback */
+                                        setTimeout(function() {
+                                            $('#' + ID[1]).fadeOut(500);
+                                            setTimeout(function() {
+                                                $('#' + ID[0]).remove()
+                                            }, 500);
+                                        },1700);
+                                    });
+                                }else{
+                                    Fv('main', {
+                                        fun: 2,
+                                        file: [faceid1, faceid2, faceid3],
+                                        check: [false, function(ID) {
+                                            // Fun Callback
+                                        }]
+                                    }, function(ID) {
+                                        /* Callback */
+                                        setTimeout(function() {
+                                            $('#' + ID[1]).fadeOut(500);
+                                            setTimeout(function() {
+                                                $('#' + ID[0]).remove()
+                                            }, 500);
+                                        },1100);
+                                    });
+                                }
                             },
                             error: function () {
                                 isSuccess = false;
+                                Fv('main', {
+                                    fun: 2,
+                                    file: [faceid1, faceid2, faceid3],
+                                    check: [false, function(ID) {
+                                        // Fun Callback
+                                    }]
+                                }, function(ID) {
+                                    /* Callback */
+                                    setTimeout(function() {
+                                        $('#' + ID[1]).fadeOut(500);
+                                        setTimeout(function() {
+                                            $('#' + ID[0]).remove()
+                                        }, 500);
+                                    },1100);
+                                });
                             }
                         })
                         //-----------
-                        if(isSuccess){
-                            Fv('main', {
-                                fun: 2,
-                                file: [faceid1, faceid2, faceid3],
-                                check: [true, function(ID) {
-                                    // Fun Callback
-                                }]
-                            }, function(ID) {
-                                /* Callback */
-                                setTimeout(function() {
-                                    $('#' + ID[1]).fadeOut(500);
-                                    setTimeout(function() {
-                                        $('#' + ID[0]).remove()
-                                    }, 500);
-                                },1700);
-                            });
-                        }else{
-                            Fv('main', {
-                                fun: 2,
-                                file: [faceid1, faceid2, faceid3],
-                                check: [false, function(ID) {
-                                    // Fun Callback
-                                }]
-                            }, function(ID) {
-                                /* Callback */
-                                setTimeout(function() {
-                                    $('#' + ID[1]).fadeOut(500);
-                                    setTimeout(function() {
-                                        $('#' + ID[0]).remove()
-                                    }, 500);
-                                },1100);
-                            });
-                        }
                         $('#' + ID[1]).fadeOut(500);
                         setTimeout(function() {
                             $('#' + ID[0]).remove()
@@ -278,30 +315,46 @@
                                             isSuccess = false;
                                             console.warn(data['Response']['Error']['Message']);
                                         }
+                                        if(isSuccess){
+                                            Fv('main', {
+                                                fun: 2,
+                                                file: [faceid1, faceid2, faceid3],
+                                                check: [true, function(ID) {
+                                                    // Fun Callback
+                                                }]
+                                            }, function(ID) {
+                                                /* Callback */
+                                                setTimeout(function() {
+                                                    $('#' + ID[1]).fadeOut(500);
+                                                    setTimeout(function() {
+                                                        $('#' + ID[0]).remove()
+                                                    }, 500);
+                                                },1700);
+                                            });
+                                        }else{
+                                            Fv('main', {
+                                                fun: 2,
+                                                file: [faceid1, faceid2, faceid3],
+                                                check: [false, function(ID) {
+                                                    // Fun Callback
+                                                }]
+                                            }, function(ID) {
+                                                /* Callback */
+                                                setTimeout(function() {
+                                                    $('#' + ID[1]).fadeOut(500);
+                                                    setTimeout(function() {
+                                                        $('#' + ID[0]).remove()
+                                                    }, 500);
+                                                },1100);
+                                            });
+                                        }
                                     },
                                     error: function () {
                                         isSuccess = false;
                                     }
                                 })
-                            }else isSuccess = false;
-                            //-----------
-                            if(isSuccess){
-                                Fv('main', {
-                                    fun: 2,
-                                    file: [faceid1, faceid2, faceid3],
-                                    check: [true, function(ID) {
-                                        // Fun Callback
-                                    }]
-                                }, function(ID) {
-                                    /* Callback */
-                                    setTimeout(function() {
-                                        $('#' + ID[1]).fadeOut(500);
-                                        setTimeout(function() {
-                                            $('#' + ID[0]).remove()
-                                        }, 500);
-                                    },1700);
-                                });
-                            }else{
+                            }else {
+                                isSuccess = false;
                                 Fv('main', {
                                     fun: 2,
                                     file: [faceid1, faceid2, faceid3],
@@ -317,7 +370,8 @@
                                         }, 500);
                                     },1100);
                                 });
-                            }
+                            };
+                            //-----------
                             $('#' + ID[1]).fadeOut(500);
                             setTimeout(function() {
                                 $('#' + ID[0]).remove()
@@ -356,46 +410,63 @@
                                             isSuccess = false;
                                             console.warn(data['Response']['Error']['Message']);
                                         }
+                                        if(isSuccess){
+                                            Fv('main', {
+                                                fun: 2,
+                                                file: [faceid1, faceid2, faceid3],
+                                                check: [true, function(ID) {
+                                                    // Fun Callback
+                                                }]
+                                            }, function(ID) {
+                                                /* Callback */
+                                                setTimeout(function() {
+                                                    $('#' + ID[1]).fadeOut(500);
+                                                    setTimeout(function() {
+                                                        $('#' + ID[0]).remove()
+                                                    }, 500);
+                                                },1700);
+                                            });
+                                        }else{
+                                            Fv('main', {
+                                                fun: 2,
+                                                file: [faceid1, faceid2, faceid3],
+                                                check: [false, function(ID) {
+                                                    // Fun Callback
+                                                }]
+                                            }, function(ID) {
+                                                /* Callback */
+                                                setTimeout(function() {
+                                                    $('#' + ID[1]).fadeOut(500);
+                                                    setTimeout(function() {
+                                                        $('#' + ID[0]).remove()
+                                                    }, 500);
+                                                },1100);
+                                            });
+                                        }
                                     },
                                     error: function () {
                                         isSuccess = false;
+                                        Fv('main', {
+                                            fun: 2,
+                                            file: [faceid1, faceid2, faceid3],
+                                            check: [false, function(ID) {
+                                                // Fun Callback
+                                            }]
+                                        }, function(ID) {
+                                            /* Callback */
+                                            setTimeout(function() {
+                                                $('#' + ID[1]).fadeOut(500);
+                                                setTimeout(function() {
+                                                    $('#' + ID[0]).remove()
+                                                }, 500);
+                                            },1100);
+                                        });
                                     }
                                 })
-                            }else isSuccess = false;
+                            }else {
+                                isSuccess = false;
+                            };
                             //-----------
-                            if(isSuccess){
-                                Fv('main', {
-                                    fun: 2,
-                                    file: [faceid1, faceid2, faceid3],
-                                    check: [true, function(ID) {
-                                        // Fun Callback
-                                    }]
-                                }, function(ID) {
-                                    /* Callback */
-                                    setTimeout(function() {
-                                        $('#' + ID[1]).fadeOut(500);
-                                        setTimeout(function() {
-                                            $('#' + ID[0]).remove()
-                                        }, 500);
-                                    },1700);
-                                });
-                            }else{
-                                Fv('main', {
-                                    fun: 2,
-                                    file: [faceid1, faceid2, faceid3],
-                                    check: [false, function(ID) {
-                                        // Fun Callback
-                                    }]
-                                }, function(ID) {
-                                    /* Callback */
-                                    setTimeout(function() {
-                                        $('#' + ID[1]).fadeOut(500);
-                                        setTimeout(function() {
-                                            $('#' + ID[0]).remove()
-                                        }, 500);
-                                    },1100);
-                                });
-                            }
                             $('#' + ID[1]).fadeOut(500);
                             setTimeout(function() {
                                 $('#' + ID[0]).remove()
