@@ -34,16 +34,19 @@
 
     <main>
 
-        <div class="Fv-Suspensionlayer">
-            <div class="Fv-Suspensionlayer_Ghost"></div>
-            <div class="Fv-Suspensionlayer_Main">
-                <img src="gifs/faceid.gif" ondragstart="return false" oncontextmenu="return false">
-            </div>
-        </div>
 
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="Fv.app.js"></script>
+    <script>
+        window.onload = function() {
+            Fv('main', {
+                fun: 1,
+                file: ['./gifs/faceid.png']
+            }, function(ID) { /* Callback */ });
+        }
+    </script>
 </body>
 
 <!-- Made By LF112, Created and produced the project by Ray. -->
