@@ -34,12 +34,6 @@
 
     <main>
 
-        <div class="Fv-Suspensionlayer">
-            <div class="Fv-Suspensionlayer_Ghost"></div>
-            <div class="Fv-Suspensionlayer_Main">
-                <img src="gifs/faceid.gif" ondragstart="return false" oncontextmenu="return false">
-            </div>
-        </div>
 
     </main>
 
@@ -48,8 +42,9 @@
     <script>
         window.onload = function() {
             Fv({
-                i: 'main'
-            });
+                i: 'main',
+                fun: 1,
+            }, function(ID) { /* Callback */ });
         }
     </script>
 </body>
