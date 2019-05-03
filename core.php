@@ -25,19 +25,6 @@ function https_request($curl, $data=null, $https=true, $method='post'){
     curl_close($ch);//关闭curl，释放资源
     return $str;
 }
-//$isLiveFaceData = 'access=Ray&image='.$_POST["image"];
-//$islive = https_request("https://ssh.s.r-ay.cn/api/faceVerf/isLiveFace.php",$isLiveFaceData);
-////echo $islive;
-//$back = json_decode($islive,true);
-////echo $back;
-//if ($back["RequestId"] == null){
-//  echo $islive;
-//  exit;
-//}
-//if ($back["Score"] < 87){
-//  echo '非活体真人';
-//exit;
-//}
 if ($_POST["method"] == "addMember") {
     $data = 'access=Ray&personName='.$_POST["personID"].'.&personID='.$_POST["personID"].'.&image='.$_POST["image"];
     $back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/addMember.php",$data);
