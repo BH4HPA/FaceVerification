@@ -13,9 +13,10 @@ let Fv = function(InBox, Fv, callback) {
             var FvMain = "",
                 BoxID = Math.random().toString(36).substr(2),
                 MainID = Math.random().toString(36).substr(2),
-                ImgID = Math.random().toString(36).substr(2);
+                ImgID = Math.random().toString(36).substr(2),
+                CloseID = Math.random().toString(36).substr(2);
             FvMain += "<div id=\"" + BoxID + "\" class=\"Fv-Suspensionlayer\" style=\"display: none;\">\n";
-            FvMain += "	<div class=\"Fv-Suspensionlayer_Ghost\"><\/div>\n";
+            FvMain += "	<div id=\"" + CloseID + "\" class=\"Fv-Suspensionlayer_Ghost\"><\/div>\n";
             FvMain += "	<div id=\"" + MainID + "\" class=\"Fv-Suspensionlayer_Main\" style=\"display: none;\"><\/div>\n";
             FvMain += "<\/div>\n";
 
@@ -46,7 +47,7 @@ let Fv = function(InBox, Fv, callback) {
 
             } else { console.log('Fv -> 未定义操作!'); return; }
 
-            callback([BoxID, MainID, ImgID])
+            callback([BoxID, MainID, ImgID, CloseID])
 
 
         } else console.log('Fv -> 元素不存在')

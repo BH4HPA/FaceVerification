@@ -35,20 +35,77 @@
     <main>
 
 
+        <div id="B1" style="position:absolute;cursor:pointer;width:55px;height:25px;margin-top: 20%;margin-left: 120px;letter-spacing:.05em;text-align:center;font-size:12px;line-height:2.2;color: #fff;border-radius: 2px;background:rgba(51,51,51,.82)!important;">展示</div>
+        <div id="B2" style="position:absolute;cursor:pointer;width:55px;height:25px;margin-top: 20%;margin-left: 60px;letter-spacing:.05em;text-align:center;font-size:12px;line-height:2.2;color: #fff;border-radius: 2px;background:rgba(51,51,51,.82)!important;">正确</div>
+        <div id="B3" style="position:absolute;cursor:pointer;width:55px;height:25px;margin-top: 20%;letter-spacing:.05em;text-align:center;font-size:12px;line-height:2.2;color: #fff;border-radius: 2px;background:rgba(51,51,51,.82)!important;">错误</div>
+
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="Fv.app.js"></script>
     <script>
         window.onload = function() {
-            Fv('main', {
-                fun: 2,
-                file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
-                check: [true, function(ID) {
-                    // Fun Callback
-                    alert(ID)
-                }]
-            }, function(ID) { /* Callback */ });
+
+            $('#B1').click(function() {
+
+                Fv('main', {
+                    fun: 1,
+                    file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
+                    check: [true, function(ID) {
+                        // Fun Callback
+                    }]
+                }, function(ID) {
+                    /* Callback */
+                    $('#' + ID[3]).click(function() {
+                        $('#' + ID[1]).fadeOut(500);
+                        setTimeout(function() {
+                            $('#' + ID[0]).remove()
+                        }, 500);
+                    })
+                });
+
+            })
+
+            $('#B2').click(function() {
+
+                Fv('main', {
+                    fun: 2,
+                    file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
+                    check: [true, function(ID) {
+                        // Fun Callback
+                    }]
+                }, function(ID) {
+                    /* Callback */
+                    $('#' + ID[3]).click(function() {
+                        $('#' + ID[1]).fadeOut(500);
+                        setTimeout(function() {
+                            $('#' + ID[0]).remove()
+                        }, 500);
+                    })
+                });
+
+            })
+
+            $('#B3').click(function() {
+
+                Fv('main', {
+                    fun: 2,
+                    file: ['./gifs/faceid.png', './gifs/faceid.gif', './gifs/faceid_fail.gif'],
+                    check: [false, function(ID) {
+                        // Fun Callback
+                    }]
+                }, function(ID) {
+                    /* Callback */
+                    $('#' + ID[3]).click(function() {
+                        $('#' + ID[1]).fadeOut(500);
+                        setTimeout(function() {
+                            $('#' + ID[0]).remove()
+                        }, 500);
+                    })
+                });
+
+            })
+
         }
     </script>
 </body>
