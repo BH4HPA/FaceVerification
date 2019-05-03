@@ -1,4 +1,5 @@
 <?php
+$domain = "https://ssh.s.r-ay.cn/api/faceVerf/";
 require_once('errorManager/ErrorParser.php');
 if ($_POST["access"] != "Ray") {
   try{
@@ -27,7 +28,7 @@ function https_request($curl, $data=null, $https=true, $method='post'){
 }
 if ($_POST["method"] == "addMember") {
     $data = 'access=Ray&personName='.$_POST["personID"].'&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
-    $back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/addMember.php",$data);
+    $back = https_request($domain."addMember.php",$data);
     $result = json_decode($back,true);
     $out["code"] = 0;
     if ($result["RequestId"] == null){
@@ -48,7 +49,7 @@ if ($_POST["method"] == "addMember") {
 }
 if ($_POST["method"] == "delMember") {
     $data = 'access=Ray&personID='.$_POST["personID"];
-    $back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/delMember.php",$data);
+    $back = https_request($domain."delMember.php",$data);
     $result = json_decode($back,true);
     $out["code"] = 0;
     if ($result["RequestId"] == null){
@@ -69,7 +70,7 @@ if ($_POST["method"] == "delMember") {
 }
 if ($_POST["method"] == "addImage") {
     $data = 'access=Ray&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
-    $back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/addImage.php",$data);
+    $back = https_request($domain."addImage.php",$data);
     $result = json_decode($back,true);
     $out["code"] = 0;
     if ($result["RequestId"] == null){
@@ -90,7 +91,7 @@ if ($_POST["method"] == "addImage") {
 }
 if ($_POST["method"] == "verfMember") {
     $data = 'access=Ray&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
-    $back = https_request("https://ssh.s.r-ay.cn/api/faceVerf/verfMember.php",$data);
+    $back = https_request($domain."verfMember.php",$data);
     $result = json_decode($back,true);
     $out["code"] = 0;
     if ($result["RequestId"] == null){

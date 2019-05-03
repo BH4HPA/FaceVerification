@@ -37,9 +37,11 @@ let Fv = function(InBox, Fv, callback) {
                 if (Fv.check[0]) {
                     $('#' + MainID).append("<img id=\"" + ImgID + "\" src=\"" + Fv.file[1]+ "\" ondragstart=\"return false\" oncontextmenu=\"return false\">");
                     Fv.check[1]([ImgID]);
+                    $("#"+ImgID).attr("src",Fv.file[1]);
                 } else if (!Fv.check[0]) {
                     $('#' + MainID).append("<img id=\"" + ImgID + "\" src=\"" + Fv.file[2]  + "\" ondragstart=\"return false\" oncontextmenu=\"return false\">");
                     Fv.check[1]([ImgID]);
+                    $("#"+ImgID).attr("src",Fv.file[2]);
                 } else console.log('Fv -> 传入值必须为布尔!')
 
                 $('#' + BoxID).css({ display: 'block' });
