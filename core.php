@@ -9,7 +9,7 @@ if ($_POST["access"] != "Ray") {
         }
   exit;
 }
-function https_request($curl, $data=null, $https=true, $method='post'){
+/*function https_request($curl, $data=null, $https=true, $method='post'){
     $ch = curl_init();//初始化
     curl_setopt($ch, CURLOPT_URL, $curl);//设置访问的URL
     curl_setopt($ch, CURLOPT_HEADER, false);//设置不需要头信息
@@ -25,10 +25,12 @@ function https_request($curl, $data=null, $https=true, $method='post'){
     $str = curl_exec($ch);//执行访问，返回结果
     curl_close($ch);//关闭curl，释放资源
     return $str;
-}
+}*/
 if ($_POST["method"] == "addMember") {
-    $data = 'access=Ray&personName='.$_POST["personID"].'&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
-    $back = https_request($domain."addMember.php",$data);
+    include_once ('addMember.php');
+    //$data = 'access=Ray&personName='.$_POST["personID"].'&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
+    //$back = https_request($domain."addMember.php",$data);
+    $back = addMember($_POST["personID"],$_POST["image"]);
     $result = json_decode($back,true);
     $out["code"] = 0;
     if ($result["RequestId"] == null){
@@ -48,8 +50,10 @@ if ($_POST["method"] == "addMember") {
     exit;
 }
 if ($_POST["method"] == "delMember") {
-    $data = 'access=Ray&personID='.$_POST["personID"];
-    $back = https_request($domain."delMember.php",$data);
+    include_once ('delMember.php');
+    //$data = 'access=Ray&personID='.$_POST["personID"];
+    //$back = https_request($domain."delMember.php",$data);
+    $back = delMember($_POST["personID"]);
     $result = json_decode($back,true);
     $out["code"] = 0;
     if ($result["RequestId"] == null){
@@ -69,8 +73,10 @@ if ($_POST["method"] == "delMember") {
     exit;
 }
 if ($_POST["method"] == "addImage") {
-    $data = 'access=Ray&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
-    $back = https_request($domain."addImage.php",$data);
+    include_once ('addImage.php');
+    //$data = 'access=Ray&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
+    //$back = https_request($domain."addImage.php",$data);
+    $back = addImage($_POST["personID"],$_POST["image"]);
     $result = json_decode($back,true);
     $out["code"] = 0;
     if ($result["RequestId"] == null){
@@ -90,8 +96,10 @@ if ($_POST["method"] == "addImage") {
     exit;
 }
 if ($_POST["method"] == "verfMember") {
-    $data = 'access=Ray&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
-    $back = https_request($domain."verfMember.php",$data);
+    include_once ('verfMember.php');
+    //$data = 'access=Ray&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
+    //$back = https_request($domain."verfMember.php",$data);
+    $back = verfMember($_POST["personID"],$_POST["image"]);
     $result = json_decode($back,true);
     $out["code"] = 0;
     if ($result["RequestId"] == null){

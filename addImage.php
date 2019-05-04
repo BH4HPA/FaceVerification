@@ -1,5 +1,5 @@
 <?php
-require_once('errorManager/ErrorParser.php');
+/*require_once('errorManager/ErrorParser.php');
 if ($_POST["access"] != "Ray") {
   try{
         throw new Exception("[0x200001] RayAlpha -> faceID -> addImage -> Access denied.");
@@ -7,7 +7,7 @@ if ($_POST["access"] != "Ray") {
         new ErrorParser($e);
         }
   exit;
-}
+}*/
 /*//先判断是不是真人
 function https_request($curl, $data=null, $https=true, $method='post'){
     $ch = curl_init();//初始化
@@ -47,27 +47,28 @@ use TencentCloud\Common\Profile\HttpProfile;
 use TencentCloud\Common\Exception\TencentCloudSDKException;
 use TencentCloud\Iai\V20180301\IaiClient;
 use TencentCloud\Iai\V20180301\Models\CreateFaceRequest;
-try {
+function addImage($personID,$image){
+    try {
 
-    $cred = new Credential("AKIDw3z4e4Wf1PyOjsmDE5nsndPAlATrc5tn", "1nQuJbicR8h9Tff3KQo5BFD1fAUcNk9Q");
-    $httpProfile = new HttpProfile();
-    $httpProfile->setEndpoint("iai.tencentcloudapi.com");
+        $cred = new Credential("AKIDw3z4e4Wf1PyOjsmDE5nsndPAlATrc5tn", "1nQuJbicR8h9Tff3KQo5BFD1fAUcNk9Q");
+        $httpProfile = new HttpProfile();
+        $httpProfile->setEndpoint("iai.tencentcloudapi.com");
 
-    $clientProfile = new ClientProfile();
-    $clientProfile->setHttpProfile($httpProfile);
-    $client = new IaiClient($cred, "ap-shanghai", $clientProfile);
+        $clientProfile = new ClientProfile();
+        $clientProfile->setHttpProfile($httpProfile);
+        $client = new IaiClient($cred, "ap-shanghai", $clientProfile);
 
-    $req = new CreateFaceRequest();
+        $req = new CreateFaceRequest();
 
-    $params = '{"PersonId":"'.$_POST["personID"].'","Images":["'.$_POST["image"].'"]}';
-    $req->fromJsonString($params);
+        $params = '{"PersonId":"' . $personID . '","Images":["' . $image . '"]}';
+        $req->fromJsonString($params);
 
 
-    $resp = $client->CreateFace($req);
+        $resp = $client->CreateFace($req);
 
-    print_r($resp->toJsonString());
-}
-catch(TencentCloudSDKException $e) {
-    echo $e;
-    //new ErrorParser($e);
+        return ($resp->toJsonString());
+    } catch (TencentCloudSDKException $e) {
+        return $e;
+        //new ErrorParser($e);
+    }
 }

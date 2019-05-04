@@ -4,7 +4,7 @@
 
 let Fv = function(InBox, Fv, callback) {
     return new Promise(function() {
-        console.clear();
+        //console.clear();
 
         if (Fv.fun <= 0) { console.log('Fv -> 未定义操作!'); return; }
         if ($(InBox).length > 0) {
