@@ -1,13 +1,4 @@
 <?php
-/*require_once('errorManager/ErrorParser.php');
-if ($_POST["access"] != "Ray") {
-  try{
-        throw new Exception("[0x200001] RayAlpha -> faceID -> delMember -> Access denied.");
-        }catch(Exception $e){
-        new ErrorParser($e);
-        }
-  exit;
-}*/
 require_once 'core/TCloudAutoLoader.php';
 use TencentCloud\Common\Credential;
 use TencentCloud\Common\Profile\ClientProfile;
@@ -19,7 +10,7 @@ function delMember($personID)
 {
     try {
 
-        $cred = new Credential("AKIDw3z4e4Wf1PyOjsmDE5nsndPAlATrc5tn", "1nQuJbicR8h9Tff3KQo5BFD1fAUcNk9Q");
+        $cred = new Credential(secretId, secretKey);
         $httpProfile = new HttpProfile();
         $httpProfile->setEndpoint("iai.tencentcloudapi.com");
 

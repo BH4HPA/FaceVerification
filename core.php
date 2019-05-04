@@ -1,6 +1,7 @@
 <?php
 $domain = "https://ssh.s.r-ay.cn/api/faceVerf/";
 require_once('errorManager/ErrorParser.php');
+require_once 'config.php';
 if ($_POST["access"] != "Ray") {
   try{
         throw new Exception("[0x200001] RayAlpha -> faceID -> verfMember -> Access denied.");
