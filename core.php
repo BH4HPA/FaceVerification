@@ -28,7 +28,7 @@ if ($_POST["access"] != "Ray") {
     return $str;
 }*/
 if ($_POST["method"] == "addMember") {
-    include_once ('addMember.php');
+    include_once('function/addMember.php');
     //$data = 'access=Ray&personName='.$_POST["personID"].'&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
     //$back = https_request($domain."addMember.php",$data);
     $back = addMember($_POST["personID"],$_POST["image"]);
@@ -51,7 +51,7 @@ if ($_POST["method"] == "addMember") {
     exit;
 }
 if ($_POST["method"] == "delMember") {
-    include_once ('delMember.php');
+    include_once('function/delMember.php');
     //$data = 'access=Ray&personID='.$_POST["personID"];
     //$back = https_request($domain."delMember.php",$data);
     $back = delMember($_POST["personID"]);
@@ -74,7 +74,7 @@ if ($_POST["method"] == "delMember") {
     exit;
 }
 if ($_POST["method"] == "addImage") {
-    include_once ('addImage.php');
+    include_once('function/addImage.php');
     //$data = 'access=Ray&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
     //$back = https_request($domain."addImage.php",$data);
     $back = addImage($_POST["personID"],$_POST["image"]);
@@ -97,7 +97,7 @@ if ($_POST["method"] == "addImage") {
     exit;
 }
 if ($_POST["method"] == "verfMember") {
-    include_once ('verfMember.php');
+    include_once('function/verfMember.php');
     //$data = 'access=Ray&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
     //$back = https_request($domain."verfMember.php",$data);
     $back = verfMember($_POST["personID"],$_POST["image"]);
