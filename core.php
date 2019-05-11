@@ -31,7 +31,9 @@ if ($_POST["method"] == "addMember") {
     include_once ('function/addMember.php');
     //$data = 'access=Ray&personName='.$_POST["personID"].'&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
     //$back = https_request($domain."addMember.php",$data);
-    $back = addMember($_POST["personID"],$_POST["image"],$_POST["verifyLive"]);
+    $verifyLive = false;
+    if ($_POST["verifyLive"] === 'true') $verifyLive = true;
+    $back = addMember($_POST["personID"],$_POST["image"],$verifyLive);
     $result = json_decode($back,true);
     $out["code"] = 0;
     if ($result["RequestId"] == null){
@@ -77,7 +79,9 @@ if ($_POST["method"] == "addImage") {
     include_once ('function/addImage.php');
     //$data = 'access=Ray&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
     //$back = https_request($domain."addImage.php",$data);
-    $back = addImage($_POST["personID"],$_POST["image"],$_POST["verifyLive"]);
+    $verifyLive = false;
+    if ($_POST["verifyLive"] === 'true') $verifyLive = true;
+    $back = addImage($_POST["personID"],$_POST["image"],$verifyLive);
     $result = json_decode($back,true);
     $out["code"] = 0;
     if ($result["RequestId"] == null){
@@ -100,7 +104,9 @@ if ($_POST["method"] == "verfMember") {
     include_once ('function/verfMember.php');
     //$data = 'access=Ray&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
     //$back = https_request($domain."verfMember.php",$data);
-    $back = verfMember($_POST["personID"],$_POST["image"],$_POST["verifyLive"]);
+    $verifyLive = false;
+    if ($_POST["verifyLive"] === 'true') $verifyLive = true;
+    $back = verfMember($_POST["personID"],$_POST["image"],$verifyLive);
     $result = json_decode($back,true);
     $out["code"] = 0;
     if ($result["RequestId"] == null){

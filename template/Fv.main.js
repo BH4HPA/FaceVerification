@@ -57,138 +57,67 @@ function addMember(userid) {
         }]
     }, function(ID) {
         /* Callback */
-        setTimeout( function(){
-            let isSuccess = false;
-            openREC();
-            setTimeout(function(){
-                let imgData = takePhoto();
-                if(imgData !== ''){
-                    $.ajax({
-                        type: 'post',
-                        url: '../core.php',
-                        data: 'access=Ray&method=addMember&personID=' + userid + '&image=' + imgData + '&verifyLive=' + isMobile,
-                        cache: false,
-                        dataType: 'json',
-                        success: function (data) {
-                            if (data['code'] === 2) {
-                                isSuccess = true;
-                                console.log(data['Info']);
-                            } else {
-                                isSuccess = false;
-                                console.warn(data['Response']['Error']['Message']);
-                            }
-                            if(isSuccess){
-                                Fv('main', {
-                                    fun: 2,
-                                    file: [faceid1, faceid2, faceid3],
-                                    check: [true, function(ID) {
-                                        // Fun Callback
-                                    }]
-                                }, function(ID) {
-                                    /* Callback */
-                                    setTimeout(function() {
-                                        $('#' + ID[1]).fadeOut(500);
-                                        setTimeout(function() {
-                                            $('#' + ID[0]).remove()
-                                        }, 500);
-                                    },1700);
-                                });
-                            }else{
-                                Fv('main', {
-                                    fun: 2,
-                                    file: [faceid1, faceid2, faceid3],
-                                    check: [false, function(ID) {
-                                        // Fun Callback
-                                    }]
-                                }, function(ID) {
-                                    /* Callback */
-                                    setTimeout(function() {
-                                        $('#' + ID[1]).fadeOut(500);
-                                        setTimeout(function() {
-                                            $('#' + ID[0]).remove()
-                                        }, 500);
-                                    },1100);
-                                });
-                            }
-                            $('#' + ID[1]).fadeOut(500);
-                            setTimeout(function() {
-                                $('#' + ID[0]).remove()
-                            }, 500);
-                        },
-                        error: function () {
+        let isSuccess = false;
+        openREC();
+        setTimeout(function(){
+            let imgData = takePhoto();
+            let FvWillFadeOut = ID[1];
+            let FvWillRemove = ID[0];
+            if(imgData !== ''){
+                $.ajax({
+                    type: 'post',
+                    url: '../core.php',
+                    data: 'access=Ray&method=addMember&personID=' + userid + '&image=' + imgData + '&verifyLive=' + isMobile,
+                    cache: false,
+                    dataType: 'json',
+                    success: function (data) {
+                        if (data['code'] === 2) {
+                            isSuccess = true;
+                            console.log(data['Info']);
+                        } else {
                             isSuccess = false;
+                            console.warn(data['Response']['Error']['Message']);
                         }
-                    })
-
-                }else {
-                    //fail
-                    Fv('main', {
-                        fun: 2,
-                        file: [faceid1, faceid2, faceid3],
-                        check: [false, function(ID) {
-                            // Fun Callback
-                        }]
-                    }, function(ID) {
-                        /* Callback */
-                        setTimeout(function() {
-                            $('#' + ID[1]).fadeOut(500);
-                            setTimeout(function() {
-                                $('#' + ID[0]).remove()
-                            }, 500);
-                        },1100);
-                    });
-                }
-                $('#' + ID[1]).fadeOut(500);
-                setTimeout(function() {
-                    $('#' + ID[0]).remove()
-                }, 500);
-                //-----------
-            },1500);
-        },1000)
-    });
-};
-function delMember(userid) {
-    Fv('main', {
-        fun: 1,
-        file: [faceid1, faceid2, faceid3],
-        check: [true, function(ID) {
-            // Fun Callback
-        }]
-    }, function(ID) {
-        /* Callback */
-        setTimeout( function(){
-            let isSuccess = false;
-            $.ajax({
-                type: 'post',
-                url: '../core.php',
-                data: 'access=Ray&method=delMember&personID=' + userid,
-                cache: false,
-                dataType: 'json',
-                success: function (data) {
-                    if (data['code'] === 2) {
-                        isSuccess = true;
-                        console.log(data['Info']);
-                    } else {
-                        isSuccess = false;
-                        console.warn(data['Response']['Error']['Message']);
-                    }
-                    if(isSuccess){
-                        Fv('main', {
-                            fun: 2,
-                            file: [faceid1, faceid2, faceid3],
-                            check: [true, function(ID) {
-                                // Fun Callback
-                            }]
-                        }, function(ID) {
-                            /* Callback */
-                            setTimeout(function() {
-                                $('#' + ID[1]).fadeOut(500);
+                        if(isSuccess){
+                            Fv('main', {
+                                fun: 2,
+                                file: [faceid1, faceid2, faceid3],
+                                check: [true, function(ID) {
+                                    // Fun Callback
+                                }]
+                            }, function(ID) {
+                                /* Callback */
                                 setTimeout(function() {
-                                    $('#' + ID[0]).remove()
-                                }, 500);
-                            },1700);
-                        });
-                    }else{
+                                    $('#' + ID[1]).fadeOut(500);
+                                    setTimeout(function() {
+                                        $('#' + ID[0]).remove()
+                                    }, 500);
+                                },1700);
+                            });
+                        }else{
+                            Fv('main', {
+                                fun: 2,
+                                file: [faceid1, faceid2, faceid3],
+                                check: [false, function(ID) {
+                                    // Fun Callback
+                                }]
+                            }, function(ID) {
+                                /* Callback */
+                                setTimeout(function() {
+                                    $('#' + ID[1]).fadeOut(500);
+                                    setTimeout(function() {
+                                        $('#' + ID[0]).remove()
+                                    }, 500);
+                                },1100);
+                            });
+                        }
+                        $('#' + FvWillFadeOut).fadeOut(500);
+                        setTimeout(function() {
+                            $('#' + FvWillRemove).remove()
+                        }, 500);
+                    },
+                    error: function () {
+                        isSuccess = false;
                         Fv('main', {
                             fun: 2,
                             file: [faceid1, faceid2, faceid3],
@@ -204,10 +133,81 @@ function delMember(userid) {
                                 }, 500);
                             },1100);
                         });
+                        $('#' + FvWillFadeOut).fadeOut(500);
+                        setTimeout(function() {
+                            $('#' + FvWillRemove).remove()
+                        }, 500);
                     }
-                },
-                error: function () {
+                })
+
+            }else {
+                //fail
+                Fv('main', {
+                    fun: 2,
+                    file: [faceid1, faceid2, faceid3],
+                    check: [false, function(ID) {
+                        // Fun Callback
+                    }]
+                }, function(ID) {
+                    /* Callback */
+                    setTimeout(function() {
+                        $('#' + ID[1]).fadeOut(500);
+                        setTimeout(function() {
+                            $('#' + ID[0]).remove()
+                        }, 500);
+                    },1100);
+                });
+                $('#' + FvWillFadeOut).fadeOut(500);
+                setTimeout(function() {
+                    $('#' + FvWillRemove).remove()
+                }, 500);
+            }
+        },1500);
+    });
+};
+function delMember(userid) {
+    Fv('main', {
+        fun: 1,
+        file: [faceid1, faceid2, faceid3],
+        check: [true, function(ID) {
+            // Fun Callback
+        }]
+    }, function(ID) {
+        /* Callback */
+        let isSuccess = false;
+        let FvWillFadeOut = ID[1];
+        let FvWillRemove = ID[0];
+        $.ajax({
+            type: 'post',
+            url: '../core.php',
+            data: 'access=Ray&method=delMember&personID=' + userid,
+            cache: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data['code'] === 2) {
+                    isSuccess = true;
+                    console.log(data['Info']);
+                } else {
                     isSuccess = false;
+                    console.warn(data['Response']['Error']['Message']);
+                }
+                if(isSuccess){
+                    Fv('main', {
+                        fun: 2,
+                        file: [faceid1, faceid2, faceid3],
+                        check: [true, function(ID) {
+                            // Fun Callback
+                        }]
+                    }, function(ID) {
+                        /* Callback */
+                        setTimeout(function() {
+                            $('#' + ID[1]).fadeOut(500);
+                            setTimeout(function() {
+                                $('#' + ID[0]).remove()
+                            }, 500);
+                        },1700);
+                    });
+                }else{
                     Fv('main', {
                         fun: 2,
                         file: [faceid1, faceid2, faceid3],
@@ -224,13 +224,34 @@ function delMember(userid) {
                         },1100);
                     });
                 }
-            })
-            //-----------
-            $('#' + ID[1]).fadeOut(500);
-            setTimeout(function() {
-                $('#' + ID[0]).remove()
-            }, 500);
-        },1000)
+                $('#' + FvWillFadeOut).fadeOut(500);
+                setTimeout(function() {
+                    $('#' + FvWillRemove).remove()
+                }, 500);
+            },
+            error: function () {
+                isSuccess = false;
+                Fv('main', {
+                    fun: 2,
+                    file: [faceid1, faceid2, faceid3],
+                    check: [false, function(ID) {
+                        // Fun Callback
+                    }]
+                }, function(ID) {
+                    /* Callback */
+                    setTimeout(function() {
+                        $('#' + ID[1]).fadeOut(500);
+                        setTimeout(function() {
+                            $('#' + ID[0]).remove()
+                        }, 500);
+                    },1100);
+                });
+                $('#' + FvWillFadeOut).fadeOut(500);
+                setTimeout(function() {
+                    $('#' + FvWillRemove).remove()
+                }, 500);
+            }
+        })
     });
 };
 function addImage(userid) {
@@ -242,11 +263,12 @@ function addImage(userid) {
         }]
     }, function(ID) {
         /* Callback */
-        setTimeout( function(){
             let isSuccess = false;
             openREC();
             setTimeout(function(){
                 let imgData = takePhoto();
+                let FvWillFadeOut = ID[1];
+                let FvWillRemove = ID[0];
                 if(imgData !== ''){
                     $.ajax({
                         type: 'post',
@@ -295,9 +317,31 @@ function addImage(userid) {
                                     },1100);
                                 });
                             }
+                            $('#' + FvWillFadeOut).fadeOut(500);
+                            setTimeout(function() {
+                                $('#' + FvWillRemove).remove()
+                            }, 500);
                         },
                         error: function () {
                             isSuccess = false;
+                            Fv('main', {
+                                fun: 2,
+                                file: [faceid1, faceid2, faceid3],
+                                check: [false, function(ID) {
+                                    // Fun Callback
+                                }]
+                            }, function(ID) {
+                                /* Callback */
+                                setTimeout(function() {
+                                    $('#' + ID[1]).fadeOut(500);
+                                    setTimeout(function() {
+                                        $('#' + ID[0]).remove()
+                                    }, 500);
+                                },1100);
+                            });
+                            setTimeout(function() {
+                                $('#' + FvWillRemove).remove()
+                            }, 500);
                         }
                     })
                 }else {
@@ -317,14 +361,12 @@ function addImage(userid) {
                             }, 500);
                         },1100);
                     });
+                    $('#' + FvWillFadeOut).fadeOut(500);
+                    setTimeout(function() {
+                        $('#' + FvWillRemove).remove()
+                    }, 500);
                 };
-                //-----------
-                $('#' + ID[1]).fadeOut(500);
-                setTimeout(function() {
-                    $('#' + ID[0]).remove()
-                }, 500);
             },1500);
-        },1000)
     });
 };
 function tryVerifyMember(userid) {
@@ -336,11 +378,12 @@ function tryVerifyMember(userid) {
         }]
     }, function(ID) {
         /* Callback */
-        setTimeout( function(){
             let isSuccess = false;
             openREC();
             setTimeout(function(){
                 let imgData = takePhoto();
+                let FvWillFadeOut = ID[1];
+                let FvWillRemove = ID[0];
                 if(imgData !== ''){
                     $.ajax({
                         type: 'post',
@@ -389,6 +432,10 @@ function tryVerifyMember(userid) {
                                     },1100);
                                 });
                             }
+                            $('#' + FvWillFadeOut).fadeOut(500);
+                            setTimeout(function() {
+                                $('#' + FvWillRemove).remove()
+                            }, 500);
                         },
                         error: function () {
                             isSuccess = false;
@@ -407,18 +454,35 @@ function tryVerifyMember(userid) {
                                     }, 500);
                                 },1100);
                             });
+                            $('#' + FvWillFadeOut).fadeOut(500);
+                            setTimeout(function() {
+                                $('#' + FvWillRemove).remove()
+                            }, 500);
                         }
                     })
                 }else {
                     isSuccess = false;
+                    Fv('main', {
+                        fun: 2,
+                        file: [faceid1, faceid2, faceid3],
+                        check: [false, function(ID) {
+                            // Fun Callback
+                        }]
+                    }, function(ID) {
+                        /* Callback */
+                        setTimeout(function() {
+                            $('#' + ID[1]).fadeOut(500);
+                            setTimeout(function() {
+                                $('#' + ID[0]).remove()
+                            }, 500);
+                        },1100);
+                    });
+                    $('#' + FvWillFadeOut).fadeOut(500);
+                    setTimeout(function() {
+                        $('#' + FvWillRemove).remove()
+                    }, 500);
                 };
-                //-----------
-                $('#' + ID[1]).fadeOut(500);
-                setTimeout(function() {
-                    $('#' + ID[0]).remove()
-                }, 500);
             },1500);
-        },1000)
     });
 };
 getPhotoAccess(); //向用户要权限
