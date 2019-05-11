@@ -2,6 +2,11 @@
 //PhpStorm 2019/5/4
 
 let  isAccessed = false;
+let  isMobile = navigator.userAgent.toLowerCase().match(/(ipod|iphone|android|coolpad|mmp|smartphone|midp|wap|xoom|symbian|j2me|blackberry|win ce)/i) != null;
+let  pictrueHeight = isMobile ? 480 : 640;//如果是手机就换成3:4拍照模式
+let  pictrueWidth = isMobile ? 640 : 480;
+$("#Fv-Canvas").attr("width",pictrueWidth);
+$("#Fv-Canvas").attr("height",pictrueHeight);
 function getPhotoAccess() { //获取摄像头权限并开始拍照方便取像
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } }).then(function(stream) {
@@ -20,7 +25,9 @@ function openREC(){ //开五秒摄像头
     let  context = canvas.getContext('2d');
     let  video = document.getElementById('Fv-Video');
     if (isAccessed) {
-        navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } }).then(function(stream) {
+        let videoMode = true;
+        if (isMobile) videoMode = { facingMode: "user" };
+        navigator.mediaDevices.getUserMedia({ video: videoMode }).then(function(stream) {
             video.srcObject = stream;
             while(stream == null) isAccessed = false;
             isAccessed = true;
@@ -37,7 +44,7 @@ function takePhoto() { //直接拍照
     let  context = canvas.getContext('2d');
     let  video = document.getElementById('Fv-Video');
     if (isAccessed) {
-        context.drawImage(video, 0, 0, 640, 480);
+        context.drawImage(video, 0, 0, pictrueHeight, pictrueWidth);
     }else return '';
     return encodeURIComponent(canvas.toDataURL('image/jpeg').split(",")[1]);
 }
@@ -59,7 +66,7 @@ function addMember(userid) {
                     $.ajax({
                         type: 'post',
                         url: '../core.php',
-                        data: 'access=Ray&method=addMember&personID=' + userid + '&image=' + imgData,
+                        data: 'access=Ray&method=addMember&personID=' + userid + '&image=' + imgData + '&verifyLive=' + isMobile,
                         cache: false,
                         dataType: 'json',
                         success: function (data) {
@@ -244,7 +251,7 @@ function addImage(userid) {
                     $.ajax({
                         type: 'post',
                         url: '../core.php',
-                        data: 'access=Ray&method=addImage&personID=' + userid + '&image=' + imgData,
+                        data: 'access=Ray&method=addImage&personID=' + userid + '&image=' + imgData + '&verifyLive=' + isMobile,
                         cache: false,
                         dataType: 'json',
                         success: function (data) {
@@ -338,7 +345,7 @@ function tryVerifyMember(userid) {
                     $.ajax({
                         type: 'post',
                         url: '../core.php',
-                        data: 'access=Ray&method=verfMember&personID=' + userid + '&image=' + imgData,
+                        data: 'access=Ray&method=verfMember&personID=' + userid + '&image=' + imgData + '&verifyLive=' + isMobile,
                         cache: false,
                         dataType: 'json',
                         success: function (data) {

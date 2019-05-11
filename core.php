@@ -4,7 +4,7 @@ require_once('errorManager/ErrorParser.php');
 require_once 'config.php';
 if ($_POST["access"] != "Ray") {
   try{
-        throw new Exception("[0x200001] RayAlpha -> faceID -> verfMember -> Access denied.");
+        throw new Exception("[0x200001] FaceVerification -> Access denied.");
         }catch(Exception $e){
         new ErrorParser($e);
         }
@@ -31,7 +31,7 @@ if ($_POST["method"] == "addMember") {
     include_once ('function/addMember.php');
     //$data = 'access=Ray&personName='.$_POST["personID"].'&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
     //$back = https_request($domain."addMember.php",$data);
-    $back = addMember($_POST["personID"],$_POST["image"]);
+    $back = addMember($_POST["personID"],$_POST["image"],$_POST["verifyLive"]);
     $result = json_decode($back,true);
     $out["code"] = 0;
     if ($result["RequestId"] == null){
@@ -77,7 +77,7 @@ if ($_POST["method"] == "addImage") {
     include_once ('function/addImage.php');
     //$data = 'access=Ray&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
     //$back = https_request($domain."addImage.php",$data);
-    $back = addImage($_POST["personID"],$_POST["image"]);
+    $back = addImage($_POST["personID"],$_POST["image"],$_POST["verifyLive"]);
     $result = json_decode($back,true);
     $out["code"] = 0;
     if ($result["RequestId"] == null){
@@ -100,7 +100,7 @@ if ($_POST["method"] == "verfMember") {
     include_once ('function/verfMember.php');
     //$data = 'access=Ray&personID='.$_POST["personID"].'&image='.urlencode($_POST["image"]);
     //$back = https_request($domain."verfMember.php",$data);
-    $back = verfMember($_POST["personID"],$_POST["image"]);
+    $back = verfMember($_POST["personID"],$_POST["image"],$_POST["verifyLive"]);
     $result = json_decode($back,true);
     $out["code"] = 0;
     if ($result["RequestId"] == null){
