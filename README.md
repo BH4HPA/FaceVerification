@@ -11,4 +11,4 @@
 
 ## 开始之前
 
-开始之前，你需要准备腾讯云的`SecretId`及`SecretKey`，如果你没有，可以到[腾讯云访问管理控制台](https://console.cloud.tencent.com/cam/capi "腾讯云访问管理控制台")获取。
+开始之前，你需要准备腾讯云的`SecretId`及`SecretKey`，如果你没有，可以到腾讯云[访问管理控制台](https://console.cloud.tencent.com/cam/capi "腾讯云访问管理控制台")获取。
